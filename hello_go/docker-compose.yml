@@ -1,0 +1,13 @@
+version: '2'
+services:
+  hello-go:
+    container_name: hello-go
+    build: .
+    command: go run main.go
+    volumes:
+      - ./src:/go/src/app
+    working_dir: /go/src/app  
+    ports:
+      - "3030:3000"
+    environment:
+      PORT: 3001

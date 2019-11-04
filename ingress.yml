@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: go-hello-world-ingress
+spec:
+  rules:
+    - host: matrix.com
+      http:
+        paths:
+        - path: /morpheus
+          backend:
+            serviceName: go-hello-world-service
+            servicePort: 9090

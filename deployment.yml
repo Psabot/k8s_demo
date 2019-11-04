@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment                 # Type de ressource
+metadata:
+  name: go-hello-world           # Nom de la ressource
+spec:
+  replicas: 3                    # Nombre de pods
+  selector:
+    matchLabels:
+      app: go-hello-world        # Le déploiement s'applique à tous les pods qui ont ce label
+  template:
+    metadata:
+      labels:                    # Le label à appliquer à tous les pods
+        app: go-hello-world 
+    spec:
+      containers:
+      - name: go-hello-world
+        image: psabotdocker/hello-go:1.0.0 
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3001

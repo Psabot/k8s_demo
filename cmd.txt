@@ -1,0 +1,14 @@
+sudo minikube start --vm-driver=none
+
+sudo docker tag hello-go pierrot/hello-go:1.0.0
+sudo docker login
+sudo docker push psabotdocker/hello-go:1.0.0
+
+#sudo minikube service go-hello-world --url
+#sudo kubectl expose deployment go-hello-world --type=NodePort --port=3001
+
+sudo minikube service go-hello-world-service --url
+
+for ((i=1;i<=100;i++)); do   curl --header "Connection: keep-alive" "http://192.168.1.36:32176/"; done
+
+sudo kubectl scale --replicas=4 deployment.yml  
